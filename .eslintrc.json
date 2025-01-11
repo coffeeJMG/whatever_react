@@ -1,0 +1,16 @@
+{
+    "extends": ["airbnb-base"],
+    "env": {
+        "browser": true,  // document 객체 사용 가능하게 함
+        "es6": true      // ES6+ 문법 사용 가능
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        }, // jsx 읽을 수 있도록 허용
+        "sourceType": "module" // import/export 문법 사용
+    },
+    "rules": {
+        "no-console": "off"  // console.log 허용
+    }
+}
