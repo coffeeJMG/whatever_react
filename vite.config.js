@@ -1,8 +1,8 @@
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-    esbuild: {
-        jsxFactory: "createElement",
-        jsxFragment: "Fragment",
-    },
+  esbuild: {
+    jsxFactory: 'createElement',
+    jsxFragment: 'Fragment',
+  },
 });
