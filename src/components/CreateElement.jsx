@@ -1,4 +1,4 @@
-// CreateElement.jsx
+// CreateElement.js
 export default function createElement(type, props, ...children) {
   // Virtual DOM 객체 생성
   const virtualElement = {

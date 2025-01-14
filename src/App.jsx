@@ -1,7 +1,8 @@
-import createElement from './mission1_3/CreateElement.jsx';
-import Header from './mission1_3/Header.jsx';
-import Home from './mission1_3/Home.jsx';
-import render from './mission1_3/Render.jsx';
+import createElement from './components/CreateElement.jsx';
+
+import Header from './components/Header.jsx';
+import Home from './components/Home.jsx';
+import render from './utils/render.js';
 
 const App = () => (
     <div className="app">
