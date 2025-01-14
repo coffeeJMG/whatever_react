@@ -1,22 +1,32 @@
 {
     "extends": ["airbnb-base"],
     "env": {
-        "browser": true,
-        "es6": true
+      "browser": true,
+      "es6": true
     },
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "sourceType": "module"
+      "ecmaVersion": 2021,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      },
+      "import/extensions": [".js", ".jsx"]
     },
     "rules": {
-        "no-console": "off",
-        "import/no-extraneous-dependencies": ["error", {
-            "devDependencies": [
-                "**/*.config.js",
-                "vite.config.js"
-            ]
-        }]
+      "rules": {
+  "no-unused-vars": ["warn", { "vars": "local", "args": "none" }]},
+      "no-console": "off",
+      "import/no-extraneous-dependencies": ["error", {
+        "devDependencies": [
+          "**/*.config.js",
+          "vite.config.js"
+        ]
+      }]
     }
-}
+  }
+  
