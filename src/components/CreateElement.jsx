@@ -1,16 +1,37 @@
-// CreateElement.js
 export default function createElement(type, props, ...children) {
-  // Virtual DOM 객체 생성
+
+
+  // children 재귀함수 
+  const processChildren = (children) => {
+    return children.flat().map((child) => {
+
+      // JSX 내부 삼항 연산자 등에 의한 falsy값 처리
+      if (child === null || child === undefined) {
+        return null;
+      }
+      
+      if (typeof child === 'string') {
+        return {
+          type: 'TEXT_ELEMENT',
+          props: { nodeValue: child }
+        };
+      }
+      
+      return child;
+    }).filter(Boolean);
+  };
+
   const virtualElement = {
     type,
     props: {
       ...props,
-      children: children.map((child) => (typeof child === 'string'
-        ? { type: 'TEXT_ELEMENT', props: { nodeValue: child } }
-        : child)),
-    },
+      children: processChildren(children)
+    }
   };
 
-  console.log('Created Virtual DOM:', virtualElement);
+  console.log(virtualElement);
+
   return virtualElement;
 }
+
+
