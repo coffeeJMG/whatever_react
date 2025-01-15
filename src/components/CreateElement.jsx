@@ -1,6 +1,5 @@
 export default function createElement(type, props, ...children) {
 
-
   // children 재귀함수 
   const processChildren = (children) => {
     return children.flat().map((child) => {

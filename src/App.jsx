@@ -1,5 +1,3 @@
-import createElement from './components/CreateElement.jsx';
-
 import Header from './components/Header.jsx';
 import Home from './components/Home.jsx';
 import render from './utils/render.js';

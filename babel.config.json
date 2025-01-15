@@ -3,9 +3,10 @@
         [
             "@babel/plugin-transform-react-jsx",
             {
-                "pragma": "createElement", // JSX 변환 시 사용할 함수 이름
-                "pragmaFrag": "Fragment" // Frgament (<></>) 사용시 변환할 이름
-            }
+                "pragma": "customCreateElement",
+                "pragmaFrag": "Fragment",
+                "importSource": "/src/components/CreateElement.jsx" 
+              }
         ]
     ],
     // 지원할 브라우저 명시적 정의
