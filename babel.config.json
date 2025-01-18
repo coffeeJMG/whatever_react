@@ -1,0 +1,13 @@
+{
+    "plugins": [
+        [
+            "@babel/plugin-transform-react-jsx",
+            {
+                "pragma": "customCreateElement",
+                "pragmaFrag": "Fragment",
+                "importSource": "/src/components/CreateElement.jsx"
+              }
+        ]
+    ]
+
+}
