@@ -1,6 +1,6 @@
 export default function createElement(type, props, ...children) {
 
-  // children 재귀함수 
+  // children 재귀함수
   const processChildren = (children) => {
     return children.flat().map((child) => {
 
@@ -8,14 +8,14 @@ export default function createElement(type, props, ...children) {
       if (child === null || child === undefined) {
         return null;
       }
-      
+
       if (typeof child === 'string') {
         return {
           type: 'TEXT_ELEMENT',
           props: { nodeValue: child }
         };
       }
-      
+
       return child;
     }).filter(Boolean);
   };
@@ -28,7 +28,7 @@ export default function createElement(type, props, ...children) {
     }
   };
 
-  console.log(virtualElement);
+
 
   return virtualElement;
 }
