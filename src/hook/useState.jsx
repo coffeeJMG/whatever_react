@@ -1,4 +1,8 @@
+import render from "../utils/render";
 
+
+let currentComponent = null;
+let states = new Map();
 
 const useState = (initState)=>{
 
@@ -7,6 +11,7 @@ const useState = (initState)=>{
   const setState = (newState)=>{
 
       state = newState;
+      render();
   }
 
   return [ state, setState]

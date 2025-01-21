@@ -1,6 +1,4 @@
 export default function render(virtualDom, container) {
-  console.log('Rendering Virtual DOM:', virtualDom);
-
 
    // Fragment면 children만 container에 추가
   if (virtualDom.type === 'fragment') {
