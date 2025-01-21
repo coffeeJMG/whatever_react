@@ -1,5 +1,6 @@
 export default function render(virtualDom, container) {
 
+
    // Fragment면 children만 container에 추가
   if (virtualDom.type === 'fragment') {
 
@@ -26,16 +27,22 @@ export default function render(virtualDom, container) {
   const propsToApply = Object.keys(virtualDom.props || {})
     .filter((key) => key !== 'children');
 
-  propsToApply.forEach((name) => {
-    element[name] = virtualDom.props[name];
-  });
+    propsToApply.forEach((name) => {
+      if (name.startsWith('on')) {
+        // 이벤트 핸들러 처리
+        const eventName = name.toLowerCase().slice(2); // onClick -> click
+        element.addEventListener(eventName, virtualDom.props[name]);
+      } else {
+        element[name] = virtualDom.props[name];
+      }
+    });
 
   // children 처리
-  if (virtualDom.props.children) {
+  if (virtualDom.props && virtualDom.props.children) {
     virtualDom.props.children.forEach((child) => {
       render(child, element);
     });
-  }
+}
 
   container.appendChild(element);
 }

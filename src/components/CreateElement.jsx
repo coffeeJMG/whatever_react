@@ -15,7 +15,7 @@ const customCreateElement = (type, props, ...children)=> {
 
 
       // 문자열은 바로 Node 에 추가할 수 없으므로 별도 처리
-      if (typeof child === 'string') {
+      if (typeof child === 'string' || typeof child === 'number') {
         return {
           type: 'TEXT_ELEMENT',
           props: { nodeValue: child }

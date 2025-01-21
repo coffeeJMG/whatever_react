@@ -2,16 +2,23 @@ import useState from "../hook/useState";
 
 const Counter = () => {
   const [count, setCount] = useState(0)
+  const [secondCount, setSecondCount] = useState(0)
 
-  const handleClick = () => {
+  const handleCountClick = () => {
+
       setCount(count => count + 1)
+  }
+
+  const secondCountClick = ()=>{
+
+    setSecondCount (count => count+1)
   }
 
   return (
       <>
           <div>
-              {count}
-              <button onClick={handleClick}>증가</button>
+              {count}<button onClick={handleCountClick}>증가</button>
+              {secondCount}<button onClick={secondCountClick}>증가</button>
           </div>
       </>
   )
