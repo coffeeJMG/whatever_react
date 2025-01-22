@@ -1,10 +1,9 @@
-
-import Counter from './components/Counter.jsx';
+import Todo from './components/Todo.jsx';
 import render from './utils/render.js';
 
 const App = () => (
     <div className="app">
-      <Counter/>
+      <Todo/>
     </div>
 );
 
