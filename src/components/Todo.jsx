@@ -1,22 +1,21 @@
 import useState from "../hook/useState";
 import styles from "./style.module.css"
 
+
 const Todo = () => {
   const [value, setValue] = useState("")
   const [todos, setTodos] = useState([])
 
-  const onChange = (e) => {
-      setValue(e.target.value);
-  }
+  const handleInputChange = (e) => {
+    console.log("onChange 발생:", e.target.value);
+    setValue(e.target.value);
+}
 
-  const onSubmit = (e) => {
-      e.preventDefault();
-
-
-        // 빈 문자열 체크
+  const handleAddTodo = () => {
+      console.log("버튼 클릭됨");
       if (value.trim() !== '') {
-
-          // 기존 todos에 새로운 value 추가
+          console.log("현재 value:", value);
+          console.log("현재 todos:", todos);
           setTodos([...todos, value]);
           setValue("");
       }
@@ -26,15 +25,17 @@ const Todo = () => {
       <>
           <div className={styles.container}>
               <h1>Todo List</h1>
-              <form className={styles.todoForm} onSubmit={onSubmit}>
+              <div className={styles.todoForm}>
                   <input
                       type="text"
-                      onChange={onChange}
+                      onChange={handleInputChange}
                       value={value}
                       placeholder="할 일을 입력하세요"
                   />
-                  <button type="submit">입력</button>
-              </form>
+                  <button type="button" onClick={handleAddTodo}>
+                      입력
+                  </button>
+              </div>
 
               <ul className={styles.list}>
                   {todos.map((todo, index) => (
@@ -47,4 +48,5 @@ const Todo = () => {
       </>
   )
 }
-export default Todo;
+
+export default Todo
