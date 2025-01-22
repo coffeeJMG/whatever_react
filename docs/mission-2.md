@@ -30,6 +30,14 @@ const withUser = (WrappedComponent) => {
 > - 생명주기 메서드의 관련 로직을 함께 유지 가능
 > - 직관적인 코드 작성 가능
 
+### State
+- 컴포넌트는 상호 작용의 결과로 화면의 내용을 변경한다. Input Form, Carousel 등 컴포넌트는 현재 입력값, 현재 이미지와 같은 것들을 <stong>기억</stong>해야 합니다.
+React는 이런 종류의 컴포넌트별 메모리를 state라고 부릅니다.
+- 컴포넌트를 새로운 데이터로 업데이트하기 위해선 다음 두 가지가 필요
+  - 렌더링 사이에 데이터를 유지
+  - React가 새로운 데이터로 컴포넌트를 렌더링 하도록 유발
+
+
 ### useState
 useState는 함수형 컴포넌트에서 상태(state)를 관리할 수 있게 해주는 React Hook입니다.
 ```javascript
