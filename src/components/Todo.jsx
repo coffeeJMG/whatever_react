@@ -6,10 +6,11 @@ const Todo = () => {
   const [value, setValue] = useState("")
   const [todos, setTodos] = useState([])
 
-  const handleInputChange = (e) => {
-    console.log("onChange 발생:", e.target.value);
+
+  const handleInput = (e) => {
     setValue(e.target.value);
-}
+  };
+
 
   const handleAddTodo = () => {
       console.log("버튼 클릭됨");
@@ -21,6 +22,12 @@ const Todo = () => {
       }
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleAddTodo();
+    }
+  };
+
   return (
       <>
           <div className={styles.container}>
@@ -28,9 +35,11 @@ const Todo = () => {
               <div className={styles.todoForm}>
                   <input
                       type="text"
-                      onChange={handleInputChange}
+                      onInput={handleInput}
                       value={value}
+                      onKeyDown={handleKeyDown}
                       placeholder="할 일을 입력하세요"
+
                   />
                   <button type="button" onClick={handleAddTodo}>
                       입력

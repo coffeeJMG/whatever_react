@@ -1,5 +1,4 @@
 export default function render(virtualDom, container) {
-  // Fragment 처리
   if (virtualDom.type === 'fragment') {
     virtualDom.props.children.forEach(child => {
       render(child, container);
@@ -7,41 +6,54 @@ export default function render(virtualDom, container) {
     return container;
   }
 
-  // 함수형 컴포넌트 처리
   if (typeof virtualDom.type === 'function') {
     const componentVirtualDom = virtualDom.type(virtualDom.props);
     render(componentVirtualDom, container);
     return container;
   }
 
-  // 텍스트 노드 처리 개선
   const element = virtualDom.type === 'TEXT_ELEMENT'
-    ? document.createTextNode(virtualDom.props.nodeValue || '')  // 실제 텍스트 값 설정
+    ? document.createTextNode(virtualDom.props.nodeValue || '')
     : document.createElement(virtualDom.type);
 
-  // props 처리
   const propsToApply = Object.keys(virtualDom.props || {})
     .filter((key) => key !== 'children');
 
   propsToApply.forEach((name) => {
     if (name.startsWith('on')) {
       const eventName = name.toLowerCase().slice(2);
+      const handler = virtualDom.props[name];
 
-      // 기존 이벤트 리스너 제거 후 재등록
-      const existingHandler = element[`__${eventName}Handler`];
-      if (existingHandler) {
-        element.removeEventListener(eventName, existingHandler);
+      switch(eventName) {
+        case 'click':
+          element.addEventListener('click', (e) => {
+            e.preventDefault();
+            handler(e);
+          });
+          break;
+          case 'input':
+            element.addEventListener('input', (e) => {
+              e.preventDefault(); // 이벤트 기본 동작 방지
+              const activeElement = document.activeElement; // 현재 포커스된 요소 저장
+              handler(e);
+              if (element.type === 'text' || element.type === 'textarea') {
+                element.value = e.target.value;
+                e.target.focus()
+              }
+              activeElement?.focus(); // 포커스 복원
+            });
+            break;
+            case 'keydown':
+            element.addEventListener('keydown', handler);
+            break;
+        default:
+          element.addEventListener(eventName, handler);
       }
-
-      element.addEventListener(eventName, virtualDom.props[name]);
-      // 핸들러 참조 저장
-      element[`__${eventName}Handler`] = virtualDom.props[name];
     } else {
       element[name] = virtualDom.props[name];
     }
   });
 
-  // children 처리
   if (virtualDom.props && virtualDom.props.children) {
     virtualDom.props.children.forEach((child) => {
       render(child, element);
