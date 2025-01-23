@@ -50,3 +50,8 @@ ul,div,h1 {
   justify-content: space-between;
   align-items: center;
 }
+
+.closeImg {
+
+  cursor: pointer;
+}
