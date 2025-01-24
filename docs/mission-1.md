@@ -21,6 +21,7 @@
     - React <strong>element</strong>를 생성한다.
         - element 생성이란 JSX 코드를 작성하면<br/>
         실제 브라우저가 이해할 수 있는 DOM 요소가 만들어지는 과정을 의미한다.
+    - JSX는 HTML처럼 보이지만 내부적으로는 일반 JavaScript 객체로 변환됩니다. 하나의 배열로 감싸지 않은 하나의 함수에서는 두 개의 객체를 반환할 수 없습니다.
         > ```javascript
         > const element = <h1>Hello World</h1>
         >{
@@ -28,7 +29,7 @@
         >props : {children: 'Hello World'}
         >}
         > ```
-        > 이렇게 트랜스파일링 된 코드를 DOM 요소 생성까지의 과정
+        > - 트랜스파일링 된 코드를 DOM 요소 생성까지의 과정
 <h3 style="color:red;">Day 1~2 요약</h3>
 
 1. 선언적 UI 작성 (JSX)

@@ -1,5 +1,5 @@
 {
-    "extends": ["airbnb-base"],
+    "extends": ["airbnb-base", "plugin:prettier/recommended", "prettier"],
     "env": {
       "browser": true,
       "es6": true
@@ -18,7 +18,16 @@
       "import/extensions": [".js", ".jsx"]
     },
     "rules": {
-      "rules": {
+      "rules": { "indent": ["error", 2],
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "semi": true,
+          "tabWidth": 2,
+          "trailingComma": "es5"
+        }
+      ],
   "no-unused-vars": ["warn", { "vars": "local", "args": "none" }]},
       "no-console": "off",
       "import/no-extraneous-dependencies": ["error", {
@@ -29,4 +38,3 @@
       }]
     }
   }
-  
