@@ -38,7 +38,7 @@ export default function render(virtualDom, container) {
           case 'click':
             // 클릭 이벤트 처리
             element.addEventListener('click', (e) => {
-              e.preventDefault();
+            e.preventDefault();
               handler(e);
             });
             break;
