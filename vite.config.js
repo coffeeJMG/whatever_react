@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   esbuild: {
     jsxFactory: 'createElement',
-    jsxFragment: 'Fragment',
+    jsxFragment: 'FRAGMENT_TYPE',
     jsxInject: `import { createElement, Fragment } from '/src/components/CreateElement.jsx'`
 
   },

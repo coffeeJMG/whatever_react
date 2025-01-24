@@ -1,4 +1,4 @@
-const FragmentType = 'fragment';
+const FRAGMENT_TYPE = 'fragment';
 
 const customCreateElement = (type, props, ...children)=> {
 
@@ -27,9 +27,9 @@ const customCreateElement = (type, props, ...children)=> {
   };
 
   // Fragment 체크
-  if (type === FragmentType) {
+  if (type === FRAGMENT_TYPE) {
     return {
-      type: FragmentType,
+      type: FRAGMENT_TYPE,
       props: {
         children: processChildren(children)
       }
@@ -47,4 +47,4 @@ const customCreateElement = (type, props, ...children)=> {
   return virtualElement;
 }
 
-export { FragmentType as Fragment, customCreateElement as createElement };
+export { FRAGMENT_TYPE as Fragment, customCreateElement as createElement };

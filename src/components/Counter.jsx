@@ -6,21 +6,21 @@ const Counter = () => {
 
   const handleCountClick = () => {
 
-      setCount(count => count + 1)
+    setCount(count => count + 1)
   }
 
-  const secondCountClick = ()=>{
+  const secondCountClick = () => {
 
-    setSecondCount (count => count+1)
+    setSecondCount(count => count + 1)
   }
 
   return (
-      <>
-          <div>
-              {count}<button onClick={handleCountClick}>증가</button>
-              {secondCount}<button onClick={secondCountClick}>증가</button>
-          </div>
-      </>
+
+    <div>
+      {count}<button onClick={handleCountClick}>증가</button>
+      {secondCount}<button onClick={secondCountClick}>증가</button>
+    </div>
+
   )
 }
 
